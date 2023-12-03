@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 const posts = {}
 
-app.post("/posts", (req,res) => {
+app.post("/blogs", (req,res) => {
     const id = randomBytes(4).toString("hex");
     const { title } = req.body;
     posts[id] = {
@@ -18,7 +18,7 @@ app.post("/posts", (req,res) => {
     res.status(201).send("Blog created");
 })
 
-app.get("/posts", (req,res) => {
+app.get("/blogs", (req,res) => {
     res.send(posts);
 })
 
