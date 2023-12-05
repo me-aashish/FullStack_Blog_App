@@ -7,6 +7,7 @@ const CommentCreate = ({ blogId }) => {
     await axios.post("http://localhost:4001/blogs/"+blogId+"/comments", {
         content: comment
     })
+    setComment("");
   }  
   return (
     <div className="mt-4">
