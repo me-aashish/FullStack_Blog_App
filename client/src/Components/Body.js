@@ -1,6 +1,7 @@
 import React from 'react'
 import AddBlogs from './AddBlogs'
-import PostLists from './PostLists'
+import BlogLists from './BlogLists'
+
 
 
 const Body = () => {
@@ -9,7 +10,7 @@ const Body = () => {
         <h1 className="font-bold text-5xl mx-[46%] mt-2 w-full">Blog App</h1>
         <AddBlogs />
         <hr className="mt-5 border-2 border-black"/>
-        <PostLists className="mt-5"/>
+        <BlogLists className="mt-5"/>
     </div>
   )
 }
