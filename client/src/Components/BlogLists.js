@@ -11,7 +11,7 @@ const BlogLists = () => {
     }
     useEffect(() => {
         fetchBlogs();
-    }, [blogs])
+    }, [])
 
     const renderedBlogs = Object.values(blogs).map((blog) => {
         return <div key={blog.id} className="ml-3" >

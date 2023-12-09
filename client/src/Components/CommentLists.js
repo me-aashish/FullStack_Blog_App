@@ -3,8 +3,21 @@ import React, { useEffect, useState } from 'react'
 
 const CommentLists = ({ comments }) => {
 
+
     const renderedComments = Object.values(comments).map((comment) => {
-        return <li key={comment.id} className="font-medium text-xl ml-20 list-disc">{comment.content}</li>
+
+
+        if(comment.status === "Approved"){
+            return <li key={comment.id} className="font-medium text-xl ml-20 list-disc text-green-700">{comment.content}</li>
+        }
+        if(comment.status === "Rejected"){
+            return <li key={comment.id} className="font-medium text-xl ml-20 list-disc text-red-700">Your comment rejected</li>
+        }
+        if(comment.status === "pending"){
+            return <li key={comment.id} className="font-medium text-xl ml-20 list-disc text-yellow-500">Comment awaiting approval</li>
+        }
+        return;
+        
     })
 
   return (
