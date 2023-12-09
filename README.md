@@ -8,3 +8,6 @@
 - Asynchronus Communication
     - Complex to understand and implement but has huge advantages over Sync Comms
     - For this, I'll build "Event Bus" or "Event Broker" from scratch
+- Query Service
+    - Query service is used for reducing the cascading network requests in fetching the blogs and then their respective comments
+    - Query service will put all the data as requested in a single request.
