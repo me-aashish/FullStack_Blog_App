@@ -14,7 +14,7 @@ const BlogLists = () => {
     }, [])
 
     const renderedBlogs = Object.values(blogs).map((blog) => {
-        return <div key={blog.id} >
+        return <div key={blog.id} className="ml-3" >
             <div className=" flex-wrap border-2 border-black w-auto inline-block m-2 p-2 font-bold text-3xl mt-4">
             {blog.title}
             <CommentLists blogId={blog.id} />
