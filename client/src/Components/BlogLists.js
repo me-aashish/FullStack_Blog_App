@@ -6,7 +6,7 @@ import CommentLists from './CommentLists';
 const BlogLists = () => {
     const [blogs, setBlogs] = useState({});
     const fetchBlogs = async() => {
-        const res = await axios.get("http://localhost:4000/blogs");
+        const res = await axios.get("http://localhost:4002/blogs");
         setBlogs(res.data);   
     }
     useEffect(() => {
@@ -17,7 +17,7 @@ const BlogLists = () => {
         return <div key={blog.id} className="ml-3" >
             <div className=" flex-wrap border-2 border-black w-auto inline-block m-2 p-2 font-bold text-3xl mt-4">
             {blog.title}
-            <CommentLists blogId={blog.id} />
+            <CommentLists comments={blog.comments} />
             <CommentCreate blogId={blog.id} />
             </div>
         </div>
