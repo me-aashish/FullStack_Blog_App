@@ -23,8 +23,17 @@ app.post("/events", (req,res) => {
         }
     }else if(type === "CommentCreated"){
         const { data } = req.body;
-        const { blogId, id, content } = data;
-        queryData[blogId].comments.push({id, content});
+        const { blogId, id, content, status } = data;
+        queryData[blogId].comments.push({id, content, status});
+    }
+    else if(type == "CommentUpdated"){
+        const { data } = req.body;
+        const { blogId, id, content, newStatus } = data;
+        const blog = queryData[blogId];
+        const comment = blog.comments.find(comment => comment.id === id)
+
+        comment.status = newStatus;
+        comment.content = content;
     }
     console.log(queryData);
     res.send({});

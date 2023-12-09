@@ -46,16 +46,15 @@ app.post("/events", async(req,res) => {
        comment.status = newStatus; 
 
        await axios.post("http://localhost:4003/events", {
-        type: "CommentUpdated",
-        data: {
-            id,
-            content,
-            blogId,
-            newStatus
-        }
-    })
-
-   }
+            type: "CommentUpdated",
+            data: {
+                id,
+                content,
+                blogId,
+                newStatus
+            }
+        })
+    }
     res.send({});
 })
 
