@@ -27,7 +27,8 @@ app.post("/blogs/:id/comments/", async(req,res) => {
         data: {
             id: commentId,
             content,
-            blogId: req.params.id
+            blogId: req.params.id,
+            status: "pending"
         }
     })
 
@@ -35,9 +36,26 @@ app.post("/blogs/:id/comments/", async(req,res) => {
 })
 
 app.post("/events", async(req,res) => {
-   
+   const { type, data } = req.body;
 
-    console.log(req.body);
+   if(type == "CommentModified"){
+       const { id, blogId, newStatus, content } = data;
+
+       const comments = commentsByBlogId[blogId]
+       const comment = comments.find(comment => comment.id === id);
+       comment.status = newStatus; 
+
+       await axios.post("http://localhost:4003/events", {
+        type: "CommentUpdated",
+        data: {
+            id,
+            content,
+            blogId,
+            newStatus
+        }
+    })
+
+   }
     res.send({});
 })
 

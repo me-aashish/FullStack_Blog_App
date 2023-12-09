@@ -21,7 +21,7 @@ app.post("/events", (req,res) => {
             title,
             comments: []
         }
-    }else{
+    }else if(type === "CommentCreated"){
         const { data } = req.body;
         const { blogId, id, content } = data;
         queryData[blogId].comments.push({id, content});
