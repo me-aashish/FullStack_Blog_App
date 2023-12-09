@@ -1,32 +1,37 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
 
 app.use(cors());
+app.use(bodyParser.json());
 
-const data = {}
+const queryData = {}
 
 app.post("/events", (req,res) => {
+    // console.log(req.body);
     const { type } = req.body;
 
     if(type === "BlogCreated"){
-        const { id, title } = req.body;
-        data[id] = {
+        const { data } = req.body;
+        const { id, title } = data
+        queryData[id] = {
             id,
             title,
-            comments: [{}]
+            comments: []
         }
     }else{
-        const { blogId, id, content } = req.body;
-        data[blogId].comments.push({id, content});
+        const { data } = req.body;
+        const { blogId, id, content } = data;
+        queryData[blogId].comments.push({id, content});
     }
-
+    console.log(queryData);
     res.send({});
 })
 
 app.get("/blogs", (req,res) => {
-    res.send(data);
+    res.send(queryData);
 })
 
 app.listen(4002, () => {
