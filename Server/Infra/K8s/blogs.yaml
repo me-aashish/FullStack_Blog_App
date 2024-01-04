@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: posts
+spec: 
+  containers:
+    - name: blogs
+      image: aashu1198/blogs:0.0.1
